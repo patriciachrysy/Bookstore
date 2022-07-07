@@ -1,21 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Book = (props) => {
-    const { book, deleteBookProps } = props;
+  const { book, deleteBookProps } = props;
 
-    return (
-        <li key={book.id}>
-            <span>{book.category}</span>
-            <h1>{book.title}</h1>
-            <span>{book.author}</span>
-            <button onClick={() => deleteBookProps(book.id)}>Remove</button>
-        </li>
-    )
-}
+  return (
+    <li>
+      <h1>{book.title}</h1>
+      <span>{book.author}</span>
+      <button type="button" onClick={() => deleteBookProps(book.id)}>Remove</button>
+    </li>
+  );
+};
 
-Book.propsType = {
-    book: PropsType.object.isRequired,
-    deleteBookProps: PropsType.func.isRequired
-}
+Book.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+  }).isRequired,
+  deleteBookProps: PropTypes.func.isRequired,
+};
 
 export default Book;
