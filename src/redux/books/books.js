@@ -7,7 +7,7 @@ export const addBook = payload => ({ type: ADD_BOOK, payload});
 
 export const removeBook = payload => ({type: REMOVE_BOOK, payload});
 
-export default reducer = (state = initialState, action) => {
+export default books = (state = initialState, action) => {
     switch (action.type) {
         case ADD_BOOK:
             return [...state, payload];
