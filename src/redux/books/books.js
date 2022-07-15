@@ -17,25 +17,49 @@ const initApp = async () => {
   }
 };
 
-export const addBook = (payload) => ({ type: ADD_BOOK, payload });
+export const addBook = (payload) => async (dispatch) => {
+  const appId = localStorage.getItem('appId');
+  try {
+    const res = await BooksService.create(appId, payload);
+    dispatch({ type: ADD_BOOK, payload });
 
-export const removeBook = (payload) => ({ type: REMOVE_BOOK, payload });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
+
+export const removeBook = (payload) => async (dispatch) => {
+  const appId = localStorage.getItem('appId');
+  try {
+    const res = await BooksService.remove(appId, payload);
+    dispatch({ type: REMOVE_BOOK, payload });
+    return Promise.resolve(res.data);
+  } catch (err) {
+    return Promise.reject(err);
+  }
+};
 
 export const retrieveBooks = () => async (dispatch) => {
   if (localStorage.getItem('appId') === null) {
     await initApp().then(
-      (success) => console.info(success),
-      (err) => console.error(err),
+      (success) => success,
+      (err) => err,
     );
   }
 
   const appId = localStorage.getItem('appId');
   try {
     const res = await BooksService.getAll(appId);
-    console.log(res);
-    dispatch({ type: RETRIVE_BOOKS, payload: res.data.length > 0 ? res.data : [] });
+    let allBooks = [];
+    if (res.data) {
+      allBooks = Object.keys(res.data).map((key) => ({ item_id: key, ...res.data[key][0] }));
+    }
+
+    dispatch({ type: RETRIVE_BOOKS, payload: allBooks });
+    return Promise.resolve(res.data);
   } catch (err) {
-    console.error(err);
+    return Promise.reject(err);
   }
 };
 
@@ -44,7 +68,7 @@ const books = (state = initialState, action) => {
     case ADD_BOOK:
       return [...state, action.payload];
     case REMOVE_BOOK:
-      return state.filter((book) => book.id !== action.payload);
+      return state.filter((book) => book.item_id !== action.payload);
     case RETRIVE_BOOKS:
       return action.payload;
     default:

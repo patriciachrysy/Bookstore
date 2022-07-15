@@ -11,7 +11,9 @@ const BookForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() && author.trim()) {
-      dispatch(addBook({ id: uuidv4(), title, author }));
+      dispatch(addBook({
+        item_id: uuidv4(), title, author, category: 'none',
+      }));
     }
   };
 

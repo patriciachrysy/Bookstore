@@ -8,7 +8,7 @@ const Book = (props) => {
   const { book } = props;
 
   const handleClick = () => {
-    dispatch(removeBook(book.id));
+    dispatch(removeBook(book.item_id));
   };
 
   return (
@@ -22,9 +22,10 @@ const Book = (props) => {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    item_id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
+    category: PropTypes.string.isRequired,
   }).isRequired,
 };
 
