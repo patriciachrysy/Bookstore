@@ -3,8 +3,10 @@ import categories from './categories/categories';
 import books from './books/books';
 
 const store = configureStore({
-  books,
-  categories,
+  reducer: {
+    books,
+    categories,
+  },
 });
 
 export default store;

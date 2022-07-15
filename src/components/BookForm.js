@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
+import { useDispatch } from 'react-redux';
+import { addBook } from '../redux/books/books';
 
-const BookForm = (props) => {
-  const { addBookProps } = props;
+const BookForm = () => {
+  const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() && author.trim()) {
-      addBookProps(title, author);
+      dispatch(addBook({ id: uuidv4(), title, author }));
     }
   };
 
@@ -20,10 +22,6 @@ const BookForm = (props) => {
       <button type="submit">ADD BOOK</button>
     </form>
   );
-};
-
-BookForm.propTypes = {
-  addBookProps: PropTypes.func.isRequired,
 };
 
 export default BookForm;
