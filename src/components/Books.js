@@ -6,10 +6,6 @@ import BookForm from './BookForm';
 const Books = () => {
   const books = useSelector((state) => state.books);
 
-  /* const deleteBook = (bookId) => {
-    setBooks(books.filter((book) => book.id !== bookId));
-  }; */
-
   return (
     <div>
       <ul>
