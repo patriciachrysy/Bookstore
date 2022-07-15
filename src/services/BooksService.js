@@ -1,21 +1,15 @@
 import http from '../http-common';
 
-const getAll = appId => {
-    return http.get(`/apps/${appId}/books`);
-}
+const getAll = (appId) => http.get(`/apps/${appId}/books`);
 
-const create = (appId, data) => {
-    return http.post(`/apps/${appId}/books`, data);
-}
+const create = (appId, data) => http.post(`/apps/${appId}/books`, data);
 
-const remove = (appId, id) => {
-    return http.delete(`/apps/${appId}/books/${id}`);
-}
+const remove = (appId, id) => http.delete(`/apps/${appId}/books/${id}`);
 
 const BooksService = {
-    getAll,
-    create,
-    remove
-}
+  getAll,
+  create,
+  remove,
+};
 
 export default BooksService;
