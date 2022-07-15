@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
+// import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
 import Book from './Book';
-import BookForm from './BookForm';
+// import BookForm from './BookForm';
 
 const Books = () => {
-  const [books, setBooks] = useState([]);
+  const books = useSelector((state) => state.books);
+  // const [books, setBooks] = useState([]);
 
-  const deleteBook = (bookId) => {
+  /* const deleteBook = (bookId) => {
     setBooks(books.filter((book) => book.id !== bookId));
   };
 
@@ -16,16 +18,16 @@ const Books = () => {
       title: bookTitle,
       author: bookAuthor,
     }]);
-  };
+  }; */
 
   return (
     <div>
       <ul>
         {
-            books.map((book) => <Book key={book.id} book={book} deleteBookProps={deleteBook} />)
+            books.map((book) => <Book key={book.id} book={book} />)
             }
       </ul>
-      <BookForm addBookProps={addBook} />
+      {/* <BookForm addBookProps={addBook} /> */}
     </div>
   );
 };

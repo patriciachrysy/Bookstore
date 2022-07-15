@@ -2,9 +2,9 @@ const ADD_BOOK = 'bookstore/books/ADD_BOOK';
 const REMOVE_BOOK = 'bookstore/books/REMOVE_BOOK';
 
 const initialState = [
-  {id: 0, title: 'Moby Dick', author: 'Charles Dickens'},
-  {id: 1, title: 'L\'enfant noir', author: 'Camara Layes'},
-  {id: 0, title: 'Meurtre au presbytère', author: 'Agatha Christie'},
+  { id: 0, title: 'Moby Dick', author: 'Charles Dickens' },
+  { id: 1, title: 'L\'enfant noir', author: 'Camara Layes' },
+  { id: 2, title: 'Meurtre au presbytère', author: 'Agatha Christie' },
 ];
 
 export const addBook = (payload) => ({ type: ADD_BOOK, payload });
