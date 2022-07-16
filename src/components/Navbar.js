@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import '../styles/Navbar.css';
+import { ImUser } from 'react-icons/im';
 
 const Navbar = () => {
   const links = [
@@ -28,6 +30,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        <span className="user"><ImUser /></span>
       </nav>
     </header>
   );
