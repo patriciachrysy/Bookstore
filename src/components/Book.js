@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { removeBook } from '../redux/books/books';
+import '../styles/Book.css';
 
 const Book = (props) => {
   const dispatch = useDispatch();
@@ -12,9 +13,10 @@ const Book = (props) => {
   };
 
   return (
-    <li>
+    <li className="book">
+      <span className="book-category">{book.category}</span>
       <h1>{book.title}</h1>
-      <span>{book.author}</span>
+      <span className="book-author">{book.author}</span>
       <button type="button" onClick={() => handleClick()}>Remove</button>
     </li>
   );
