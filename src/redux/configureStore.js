@@ -1,5 +1,4 @@
-import { configureStore, applyMiddleware } from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
+import { configureStore } from '@reduxjs/toolkit';
 import categories from './categories/categories';
 import books from './books/books';
 
@@ -8,6 +7,6 @@ const store = configureStore({
     books,
     categories,
   },
-}, applyMiddleware(thunk));
+});
 
 export default store;
