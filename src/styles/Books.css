@@ -1,0 +1,13 @@
+.book-list {
+  padding: 1.3rem 6.25rem 5rem 6.25rem;
+}
+
+.book-list ul {
+  padding: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-bottom: 1px solid #e8e8e8;
+  list-style: none;
+  margin: 0;
+}

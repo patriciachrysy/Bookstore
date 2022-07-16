@@ -4,16 +4,19 @@ import Navbar from './components/Navbar';
 import Books from './components/Books';
 import Categories from './components/Categories';
 import store from './redux/configureStore';
+import './App.css';
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
-        <Navbar />
-        <Routes>
-          <Route exact="true" path="/" element={<Books />} />
-          <Route path="/categories" element={<Categories />} />
-        </Routes>
+        <div className="container">
+          <Navbar />
+          <Routes>
+            <Route exact="true" path="/" element={<Books />} />
+            <Route path="/categories" element={<Categories />} />
+          </Routes>
+        </div>
       </Router>
     </Provider>
   );
