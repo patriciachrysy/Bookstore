@@ -65,7 +65,7 @@ export const retrieveBooks = createAsyncThunk(
 const books = (state = initialState, action) => {
   switch (action.type) {
     case ADD_BOOK:
-      return [...state, action.payload.books];
+      return [...state, action.payload.book];
     case REMOVE_BOOK:
       return state.filter((book) => book.item_id !== action.payload.bookId);
     case RETRIEVE_BOOKS:
